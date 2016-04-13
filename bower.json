@@ -1,0 +1,30 @@
+{
+  "name": "test-results-simple-viewer",
+  "description": "Simple UI to view test results",
+  "main": "String",
+  "authors": [
+    "hhardraada"
+  ],
+  "license": "Apache License 2.0",
+  "keywords": [
+    "test",
+    "status",
+    "UI"
+  ],
+  "homepage": "https://github.com/hhardraada/test-results-simple-viewer",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "datatables-plugins": "^1.10.11",
+    "datatables": "^1.10.11",
+    "font-awesome": "^4.6.1",
+    "datatables-responsive": "^2.0.2"
+  }
+}
