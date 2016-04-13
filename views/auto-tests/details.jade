@@ -1,0 +1,57 @@
+extends ../layout
+
+block content
+    #page-wrapper
+      .row
+        .col-lg-12
+          h1.page-header Automated Test Details
+      .row
+        .col-lg-12
+            .panel-body
+              .table-responsive
+                table.table.table-bordered.table-striped
+                  tbody
+                    tr
+                      th Name
+                      td #{autoTest.name}
+                    tr
+                      th Description
+                      td #{autoTest.description}
+                    - each autoTestSchemaField in autoTestSchemaFields
+                        tr
+                          th #{autoTestSchemaField.name}
+                          td #{autoTest.get(autoTestSchemaField.name.toLowerCase())}
+                    - var formattedTime = moment(autoTest.createdTime).format('YYYY-DD-MM  HH:mm:ss');
+                    - var numMinutes = Math.floor((((autoTest.duration % 31536000) % 86400) % 3600) / 60);
+                    - var numSeconds = (((autoTest.duration % 31536000) % 86400) % 3600) % 60;
+                    tr
+                      th Created
+                      td #{formattedTime}
+                    tr
+                      th Duration
+                      td #{numMinutes}m #{numSeconds}s
+                    tr
+                      th Log
+                      td #{autoTest.log}
+        .row
+          .col-lg-12
+            .panel.panel-default
+              .panel-heading
+                | Automated Test History
+              .panel-body
+                .dataTable_wrapper
+                  table#dataTables-example.table.table-striped.table-bordered.table-hover
+                    thead
+                      tr
+                        th Created
+                        th Status
+                        th Duration
+                        th Log
+                    tbody
+                      - each instance, i in autoTest.instances
+                          if instance.status == "Success"
+                              tr.odd.gradeX.success
+                                include ./includes/details-row.jade
+                          else
+                              tr.odd.gradeX.danger
+                                include ./includes/details-row.jade

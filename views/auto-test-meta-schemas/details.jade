@@ -1,0 +1,48 @@
+extends ../layout
+
+block content
+    #page-wrapper
+      .row
+        .col-lg-12
+          h1.page-header Test Schema
+      .row
+        .col-md-5.col-md-offset-3
+          .login-panel.panel.panel-default
+            .panel-body.controls
+              form.form-inline
+                fieldset
+                    .entry.form-group
+                        input.form-control(disabled="disabled", value="name")
+                        input.form-control(disabled="disabled", value="String")
+                    .entry.form-group
+                        input.form-control(disabled="disabled", value="description")
+                        input.form-control(disabled="disabled", value="String")
+                    .entry.form-group
+                        input.form-control(disabled="disabled", value="duration")
+                        input.form-control(disabled="disabled", value="Number")
+                    .entry.form-group
+                        input.form-control(disabled="disabled", value="createdTime")
+                        input.form-control(disabled="disabled", value="Date")
+                    .entry.form-group
+                        input.form-control(disabled="disabled", value="status")
+                        input.form-control(disabled="disabled", value="String")
+              form.form-inline(role='form', autocomplete='off', action='/auto-test-meta-schemas', method='POST', enctype='application/x-www-form-urlencoded')
+                fieldset
+                    if autoTestMetaSchemaFields.length == 0
+                        .entry.form-group
+                            input.form-control(placeholder='Name', name='name', type='name', autofocus='')
+                            input.form-control(placeholder='Type', name='type', type='type', autofocus='')
+                            button.btn.btn-success.btn-add(type='button')
+                              span.glyphicon.glyphicon-plus
+                    else
+                      - each autoTestMetaSchemaField, i in autoTestMetaSchemaFields
+                            .entry.form-group
+                                input.form-control(placeholder='Name', name='name', type='name', autofocus='', value='#{autoTestMetaSchemaField.name}')
+                                input.form-control(placeholder='Type', name='type', type='type', autofocus='', value='#{autoTestMetaSchemaField.type}')
+                                if i == autoTestMetaSchemaFields.length - 1
+                                    button.btn.btn-success.btn-add(type='button')
+                                      span.glyphicon.glyphicon-plus
+                                else
+                                    button.btn.btn-danger.btn-remove(type='button')
+                                      span.glyphicon.glyphicon-minus
+                button.btn.btn-lg.btn-info.pull-right(type='submit') Save

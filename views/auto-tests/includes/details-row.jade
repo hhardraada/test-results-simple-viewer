@@ -1,0 +1,15 @@
+td #{instance.createdTime}
+td #{instance.status}
+td #{instance.duration}
+td
+  button.btn-link(data-toggle='modal', data-target='#myModal#{i}')
+    i.fa.fa-search.fa-1x
+  .modal.fade(id='myModal#{i}' tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog.modal-lg
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h4#myModalLabel.modal-title Log Details
+        .modal-body
+          pre
+            | #{instance.log}

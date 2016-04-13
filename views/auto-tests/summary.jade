@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+    #page-wrapper
+        .row
+            .col-lg-12
+              h1.page-header #{jira}
+
+        include ./includes/dashbar.jade
+
+        .row
+          .col-lg-12
+            .panel.panel-default
+              .panel-heading
+                | Automated Test Results
+              .panel-body
+                .dataTable_wrapper
+                  table#dataTables-example.table.table-striped.table-bordered.table-hover
+                    thead
+                      tr
+                        th Name
+                        th Status
+                        th Description
+                        - each autoTestSchemaField in autoTestSchemaFields
+                            th #{autoTestSchemaField.name}
+                        th Created
+                        th Duration
+                        th Log
+                    tbody
+                      - each autoTest in autoTests
+                          if autoTest.status == "Success"
+                            tr.success.odd.gradeX
+                                include ./includes/summary-row.jade
+                          else
+                            tr.danger.clickable.odd.gradeX
+                                include ./includes/summary-row.jade

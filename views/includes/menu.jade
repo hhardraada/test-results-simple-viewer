@@ -1,0 +1,30 @@
+nav.navbar.navbar-default.navbar-static-top(style='margin-bottom: 0', role='navigation')
+    .navbar-header
+      a.navbar-brand(href='/') Test Automation Status Viewer
+    ul.nav.navbar-top-links.navbar-right
+      li.dropdown
+        a.dropdown-toggle(data-toggle='dropdown', href='#')
+          i.fa.fa-user.fa-fw
+          i.fa.fa-caret-down
+        ul.dropdown-menu.dropdown-user
+          li
+            a(href='#')
+              i.fa.fa-user.fa-fw
+              |  User Profile
+          li
+            a(href='#')
+              i.fa.fa-gear.fa-fw
+              |  Settings
+          li.divider
+          li
+            a(href='/logout')
+              i.fa.fa-sign-out.fa-fw
+              |  Logout
+
+    .navbar-default.sidebar(role='navigation')
+        .sidebar-nav.navbar-collapse
+          ul#side-menu.nav.in
+            li
+              a.active(href='/auto-tests')
+                i.fa.fa-dashboard.fa-fw
+                |  Test Status

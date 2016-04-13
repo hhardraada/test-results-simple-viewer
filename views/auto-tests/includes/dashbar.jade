@@ -1,0 +1,37 @@
+.row
+  .col-lg-3.col-md-6
+    .panel.panel-primary
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-list-alt.fa-5x
+          .col-xs-9.text-right
+            .huge #{totalCount}
+            div Total Tests
+  .col-lg-3.col-md-6
+    .panel.panel-primary
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-clock-o.fa-5x
+          .col-xs-9.text-right
+            .huge #{totalDuration}
+            div Total Duration
+  .col-lg-3.col-md-6
+    .panel.panel-green
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-check.fa-5x
+          .col-xs-9.text-right
+            .huge #{successfulCount}
+            div Currently Passing
+  .col-lg-3.col-md-6
+    .panel.panel-red
+      .panel-heading
+        .row
+          .col-xs-3
+            i.fa.fa-times.fa-5x
+          .col-xs-9.text-right
+            .huge #{failureCount}
+            div Currently Failing

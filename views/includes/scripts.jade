@@ -1,0 +1,31 @@
+script(src='/jquery/dist/jquery.min.js')
+script(src='/bootstrap/dist/js/bootstrap.min.js')
+script(src='/metisMenu/dist/metisMenu.min.js')
+script(src='/datatables/media/js/jquery.dataTables.min.js')
+script(src='/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')
+script(src='/javascripts/sb-admin-2.js')
+script.
+  $(document).ready(function() {
+  $('#dataTables-example').DataTable({
+  responsive: true
+  });
+  });
+
+script.
+    $(function() {
+        $(document).on('click', '.btn-add', function(e) {
+            e.preventDefault();
+            var controlForm = $('.controls form:first'),
+                currentEntry = $(this).parents('.entry:first'),
+                newEntry = $(currentEntry.clone()).appendTo(controlForm);
+            newEntry.find('input').val('');
+            controlForm.find('.entry:not(:last) .btn-add')
+                .removeClass('btn-add').addClass('btn-remove')
+                .removeClass('btn-success').addClass('btn-danger')
+                .html('<span class="glyphicon glyphicon-minus"></span>');
+        }).on('click', '.btn-remove', function(e) {
+            $(this).parents('.entry:first').remove();
+            e.preventDefault();
+            return false;
+        });
+    });
