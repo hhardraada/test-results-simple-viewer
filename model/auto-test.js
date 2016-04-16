@@ -11,7 +11,7 @@ var autoTestSchema = new mongoose.Schema({
                     duration:     {type: String, required: true},
                     createdTime:  {type: Date, default: Date.now},
                     log:          String
-                }]
+                }, {strict: true}]
 }, {strict: false});
 autoTestSchema.index({ name: 1}, { unique: true }); //Adds index and grants uniqueness
 

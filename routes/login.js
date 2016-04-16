@@ -17,7 +17,7 @@ var router = express.Router();
   });
 
   router.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/home',
+    successRedirect: '/auto-tests',
     failureRedirect: '/signup',
     failureFlash : true
   }));
@@ -26,14 +26,5 @@ router.get('/logout', function(req, res) {
   req.logout();
   res.redirect('/');
 });
-
-
-
-//router.get('/auto-tests', function (req, res, next) {
-//                      if (req.isAuthenticated()) return next();
-//                      res.redirect('/');
-//                    }, function(req, res){
-//  res.render('/', { user: req.user });
-//});
 
 module.exports = router;

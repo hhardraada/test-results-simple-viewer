@@ -1,9 +1,10 @@
-var express = require('express'),
-    router = express.Router(),
-    mongoose = require('mongoose'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    autoTestHandler = require('../service/auto-tests');
+var express         = require('express');
+var mongoose        = require('mongoose');
+var bodyParser      = require('body-parser');
+var methodOverride  = require('method-override');
+var autoTestHandler = require('../services/auto-tests');
+
+var router = express.Router();
 
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res){
@@ -15,19 +16,19 @@ router.use(methodOverride(function(req, res){
 }))
 
 
-//function requireLogin(req, res, next) {
-//  if (req.isAuthenticated()) {
-//    console.log("User is logged in. Accessing AutoTests")
-//    next();
-//  } else {
-//    console.log("User is not logged in. Redirecting...")
-//    res.redirect("/");
-//  }
-//}
-//
-//router.all("/*", requireLogin, function(req, res, next) {
-//  next();
-//});
+function requireLogin(req, res, next) {
+  if (req.isAuthenticated()) {
+    console.log("User is logged in. Accessing AutoTests")
+    next();
+  } else {
+    console.log("User is not logged in. Redirecting...")
+    res.redirect("/");
+  }
+}
+
+router.all("/*", requireLogin, function(req, res, next) {
+  next();
+});
 
 
 router.route('/')

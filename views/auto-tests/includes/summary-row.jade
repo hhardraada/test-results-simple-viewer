@@ -1,14 +1,14 @@
 - var formattedTime = moment(autoTest.createdTime).format('YYYY-DD-MM  HH:mm:ss');
 - var numMinutes = Math.floor((((autoTest.duration % 31536000) % 86400) % 3600) / 60);
 - var numSeconds = (((autoTest.duration % 31536000) % 86400) % 3600) % 60;
-td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{autoTest.name}
-td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{autoTest.status}
-td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{autoTest.description}
+td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{autoTest.name}
+td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{autoTest.status}
+td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{autoTest.description}
 - each autoTestSchemaField in autoTestSchemaFields
-    td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{autoTest.get(autoTestSchemaField.name.toLowerCase())}
+    td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{autoTest.get(autoTestSchemaField.name.toLowerCase())}
 
-td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{formattedTime}
-td.clickable(onclick="window.document.location='/auto-test-dynamic/#{autoTest._id}';") #{numMinutes}m #{numSeconds}s
+td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{formattedTime}
+td.clickable(onclick="window.document.location='/auto-tests/#{autoTest._id}';") #{numMinutes}m #{numSeconds}s
 td
   button.btn-link(data-toggle='modal', data-target='#myModal#{i}')
     i.fa.fa-search.fa-1x

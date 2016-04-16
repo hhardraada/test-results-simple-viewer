@@ -1,9 +1,10 @@
 $(function() {
     $(document).on('click', '.btn-add', function(e) {
         e.preventDefault();
-        var controlForm = $('.controls form:first'),
+        var controlForm = $('.controls .form-dynamic'),
             currentEntry = $(this).parents('.entry:first'),
             newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
         newEntry.find('input').val('');
         controlForm.find('.entry:not(:last) .btn-add')
             .removeClass('btn-add').addClass('btn-remove')

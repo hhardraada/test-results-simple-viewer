@@ -107,7 +107,7 @@ passport.use('login', new LocalStrategy({
     passReqToCallback : true
   },
   function(req, username, password, done) {
-    mongoose.model('User').findOne({ 'username' :  username },
+    User.findOne({ 'username' :  username },
       function(err, user) {
         if (err)
           return done(err);
@@ -132,7 +132,7 @@ passport.use('signup', new LocalStrategy({
   },
   function(req, username, password, done) {
     findOrCreateUser = function(){
-      mongoose.model('User').findOne({'username':username},function(err, user) {
+      User.findOne({'username':username},function(err, user) {
         if (err){
           console.log('Error in SignUp: '+err);
           return done(err);
@@ -142,9 +142,9 @@ passport.use('signup', new LocalStrategy({
           return done(null, false, req.flash('message','User Already Exists'));
         } else {
           var newUser = new User();
-          username= username;
-          password= bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
-          email= req.param('email');
+          newUser.username= username;
+          newUser.password= bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+          newUser.email= req.param('email');
 
           newUser.save(function(err) {
             if (err){

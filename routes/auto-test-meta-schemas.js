@@ -3,7 +3,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    autoTestMetaSchemaService = require('../service/auto-test-meta-schemas');
+    autoTestMetaSchemaService = require('../services/auto-test-meta-schemas');
 
 router.use(bodyParser.urlencoded({ extended: true }))
 router.use(methodOverride(function(req, res){
@@ -25,9 +25,9 @@ function requireLogin(req, res, next) {
   }
 }
 
-//router.all("/*", requireLogin, function(req, res, next) {
-//  next();
-//});
+router.all("/*", requireLogin, function(req, res, next) {
+  next();
+});
 
 
 router.route('/')
